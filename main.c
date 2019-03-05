@@ -47,6 +47,8 @@ unsigned int grabmask2 = Mod1Mask;
 unsigned int altmask = ShiftMask;
 static const char *const def_term[] = { DEF_TERM, NULL };
 char **opt_term = (char **)def_term;
+static const char *const def_menu[] = { "rofi_run", NULL };
+char **opt_menu = (char **)def_menu;
 int          opt_bw = DEF_BW;
 int          opt_snap = 0;
 #ifdef SOLIDDRAG
