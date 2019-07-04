@@ -33,6 +33,9 @@ static void handle_key_event(XKeyEvent *e) {
 		case KEY_NEW:
 			spawn((const char *const *)opt_term);
 			break;
+		case KEY_XLOCK:
+			spawn((const char *const *)opt_lock);
+			break;
 		case KEY_DMENU:
 			spawn((const char *const *)opt_menu);
 			break;
@@ -77,15 +80,15 @@ static void handle_key_event(XKeyEvent *e) {
 	}
 	c = current;
 	if (c == NULL) return;
-	width_inc = (c->width_inc > 1) ? c->width_inc : 16;
-	height_inc = (c->height_inc > 1) ? c->height_inc : 16;
+	width_inc = (c->width_inc > 1) ? c->width_inc : 32;
+	height_inc = (c->height_inc > 1) ? c->height_inc : 32;
 	switch (key) {
 		case KEY_LEFT:
 			if (e->state & altmask) {
 				if ((c->width - width_inc) >= c->min_width)
 					c->width -= width_inc;
 			} else {
-				c->x -= 16;
+				c->x -= 32;
 			}
 			goto move_client;
 		case KEY_DOWN:
@@ -93,7 +96,7 @@ static void handle_key_event(XKeyEvent *e) {
 				if (!c->max_height || (c->height + height_inc) <= c->max_height)
 					c->height += height_inc;
 			} else {
-				c->y += 16;
+				c->y += 32;
 			}
 			goto move_client;
 		case KEY_UP:
@@ -101,7 +104,7 @@ static void handle_key_event(XKeyEvent *e) {
 				if ((c->height - height_inc) >= c->min_height)
 					c->height -= height_inc;
 			} else {
-				c->y -= 16;
+				c->y -= 32;
 			}
 			goto move_client;
 		case KEY_RIGHT:
@@ -109,7 +112,7 @@ static void handle_key_event(XKeyEvent *e) {
 				if (!c->max_width || (c->width + width_inc) <= c->max_width)
 					c->width += width_inc;
 			} else {
-				c->x += 16;
+				c->x += 32;
 			}
 			goto move_client;
 		case KEY_TOPLEFT:

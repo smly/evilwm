@@ -229,6 +229,7 @@ extern unsigned int     grabmask1;
 extern unsigned int     grabmask2;
 extern unsigned int     altmask;
 extern char             **opt_term;
+extern char             **opt_lock;
 extern char             **opt_menu;
 extern int              opt_bw;
 extern int              opt_snap;
